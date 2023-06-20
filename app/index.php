@@ -33,6 +33,7 @@
   $architectureLogos = [
     'x86_64' => 'https://images.computerhistory.org/revonline/images/102662150p-03-01.jpg?w=600',
     'arm64' => 'https://images.anandtech.com/doci/13959/1_678x452.jpg',
+    'aarch64' => 'https://www.apple.com/newsroom/images/live-action/wwdc-2022/Apple-WWDC22-M2-chip-hero-220606_big.jpg.large_2x.jpg',
     'ppc64le' => 'https://upload.wikimedia.org/wikipedia/commons/7/7d/IBM_PowerPC601_PPC601FD-080-2_top.jpg',
     // Add more mappings for other CPU architectures if needed
   ];
@@ -45,6 +46,6 @@
   <?php if (!empty($cpuLogo)) { ?>
     <img src="<?php echo $cpuLogo; ?>" alt="CPU Logo" class="cpu-logo">
   <?php } ?>
-  <p>Server CPU Architecture: <?php echo $cpuArchitecture; ?></p>
+  <p>Running on CPU Architecture: <?php echo $cpuArchitecture; ?></p>
 </body>
 </html>

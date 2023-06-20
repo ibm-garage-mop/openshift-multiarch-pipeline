@@ -1,0 +1,30 @@
+# Base Image
+FROM quay.io/fedora/fedora:latest
+
+# Maintainer Info
+LABEL Author="Daniel Abreu"
+LABEL Email="dleitede@redhat.com"
+
+# Install requirements.
+RUN dnf makecache --timer \
+  && dnf -y install initscripts \
+  && dnf -y update \
+  && dnf -y install \
+  httpd \ 
+  php \
+  git \
+  unzip \
+  curl \
+   && dnf clean all
+
+# Expose port
+EXPOSE 80
+
+# Create a folder for php-fpm
+RUN mkdir /run/php-fpm
+
+# Add app to webserver
+COPY ./app/index.php /var/www/html
+
+# set the entrypoint to the start webserver
+ENTRYPOINT ["/bin/sh", "-c", "/usr/sbin/php-fpm && /usr/sbin/httpd -D FOREGROUND"]
