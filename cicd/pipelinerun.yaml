@@ -1,0 +1,26 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: app-build-run
+spec:
+  serviceAccountName: pipeline
+  pipelineRef:
+    name: app-build
+  params:
+    - name: REPO
+      value: "https://github.com/ibm-garage-mop/openshift-multiarch-pipeline.git"
+    - name: IMAGE
+      value: "quay.io/dabreu/cpu-arch-app"
+    - name: TAG
+      value: ppc
+    - name: DOCKERFILE
+      value: "container-image-files/DockerFile"
+  workspaces:
+    - name: workspace
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 10Gi
