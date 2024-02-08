@@ -139,7 +139,7 @@
         <div class="row">
             <?php if ($cpuArchitecture == 'x86_64') { ?>
               <h2 class="cpu-title">x86</h2>
-            <?php } else if ($cpuArchitecture == 'arm64') { ?>
+            <?php } else if ($cpuArchitecture == 'aarch64') { ?>
               <h2 class="cpu-title">ARM</h2>
             <?php } else if ($cpuArchitecture == 'ppc64le') { ?>
               <h2 class="cpu-title">IBM </br>Power</h2>
